@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import './Home.css'
+import { Link } from "react-router-dom";
 
 export class Home extends Component {
   // constructor(){
@@ -21,7 +22,9 @@ export class Home extends Component {
 </h2>
           <div className='start-buttons'>
             <button className='signup-button'>Start for free!</button>
-            <button className='guest-button'>Take a test drive</button>
+            <Link to="/dashboard">
+              <button className='guest-button'>Take a test drive</button>
+            </Link>
           </div>
         </div>
         <div className='login-container'>
