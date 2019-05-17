@@ -7,33 +7,30 @@ require('dotenv').config()
 
 // "2 large russet potatoes, peeled and cut into chunks".split("large")[1].split(",")[0].trim()
 
-axios.get('https://api.edamam.com/search?q=chicken&app_id=43dc959a&app_key=4a73b5f32de593a4e72fcec4106a1503&from=0&to=3')
+axios.get('https://www.themealdb.com/api/json/v1/1/random.php')
   .then(function (response) {
-    const recipes = response.data.hits
+    // console.log(response.data);
 
-    recipes.map(recipe => {
-      let ingredientsArray = []
-      console.log(recipe.recipe.ingredientLines);
+    const recipe = response.data.meals[0];
 
-      const measurmentsArray = ['grams', 'pounds', 'teaspoons', 'cups', 'tablespoons', 'cloves', 'large', 'cup', 'pound', 'teaspoon', 'clove', 'tablespoon', 'gram']
-      recipe.recipe.ingredientLines.map(ingredient => {
-        measurmentsArray.map(measurment => {
-          if (ingredient.includes('salt') || ingredient.includes('peper')) {
-            return ''
-          } else if (ingredient.includes(measurment)) {
-            let newIngredient = (ingredient.split(measurment)[1].split(",")[0].trim());
-            console.log(newIngredient);
-            return ingredientsArray.push(newIngredient)
+    // console.log(recipe[`strIngredient${1}`])
+    const numbArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
+    let ingredientsArray = []
 
-          }
-        })[0]
+    numbArray.map(e => {
+      if (!recipe[`strIngredient${e}`]) {
+        console.log('empty', e);
+        return ''
+      } else {
+        console.log(recipe[`strIngredient${e}`]);
 
-      })
-      console.log("ingredients", ingredientsArray);
+        return ingredientsArray.push(recipe[`strIngredient${e}`])
+
+      }
     })
 
+    console.log(ingredientsArray);
 
-    // console.log(response.data.hits);
   })
   .catch(function (error) {
     // handle error
@@ -46,10 +43,10 @@ axios.get('https://api.edamam.com/search?q=chicken&app_id=43dc959a&app_key=4a73b
 
 
 
-mongoose.connect(process.env.CONNECTION_STRING, { useNewUrlParser: true })
+// mongoose.connect(process.env.CONNECTION_STRING, { useNewUrlParser: true })
 
 
 
-mongoose.connection.once('open', () => {
-  console.log('db is running');
-})
+// mongoose.connection.once('open', () => {
+//   console.log('db is running');
+// })
