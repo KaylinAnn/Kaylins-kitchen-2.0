@@ -5,8 +5,8 @@ const recipeSchema = new Schema({
   label: String,
   image: String,
   videoUrl: String,
-  ingredients: Array,
-  measurments: Array,
+  ingredients: [String],
+  measurments: [String],
   directions: String,
 
 

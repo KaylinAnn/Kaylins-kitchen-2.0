@@ -11,6 +11,16 @@ const { GraphQLObjectType,
   GraphQLNonNull
 } = graphql
 
+// "const RootQuery = new GraphQLObjectType({
+//   name: 'RootQueryType',
+//   fields: {
+//     recipe: {
+//       type: recipeType,
+//       args: {}
+//     }
+//   }
+// })"
+
 
 
 const Mutation = new GraphQLObjectType({
