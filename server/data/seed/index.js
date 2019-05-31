@@ -1,6 +1,8 @@
 const mongoose = require('mongoose')
 const axios = require('axios')
 const { gql } = require('apollo-boost')
+import { graphql, compose } from 'react-apollo'
+import { getAuthorsQuery, addBookMutation, getBooksQuery } from '../../Queries/Queries'
 
 
 require('dotenv').config()

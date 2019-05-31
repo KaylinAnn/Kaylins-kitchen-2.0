@@ -11,16 +11,17 @@ const { GraphQLObjectType,
   GraphQLNonNull
 } = graphql
 
-// "const RootQuery = new GraphQLObjectType({
-//   name: 'RootQueryType',
-//   fields: {
-//     recipe: {
-//       type: recipeType,
-//       args: {}
-//     }
-//   }
-// })"
-
+const recipeType = new GraphQLObjectType({
+  name: 'Recipe',
+  fields: () => ({
+    label: { type: GraphQLString },
+    image: { type: GraphQLString },
+    videoUrl: { type: GraphQLString },
+    ingredients: { type: GraphQLList(ingredient) },
+    measurments: { type: GraphQLList(measurment) },
+    directions: { type: GraphQLString }
+  })
+})
 
 
 const Mutation = new GraphQLObjectType({
