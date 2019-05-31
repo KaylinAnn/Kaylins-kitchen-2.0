@@ -3,13 +3,6 @@ import './Home.css'
 import { Link } from "react-router-dom";
 
 export class Home extends Component {
-  // constructor(){
-  //   super()
-  //   this.state ={
-
-  //   }
-  // }
-
 
 
   render() {
