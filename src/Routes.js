@@ -9,7 +9,7 @@ import Recipe from './components/Recipe/Recipe'
 
 export default (
   <Switch>
-    <Route path="/dashboard" component={Dashboard} />
+    <Route exact path="/dashboard" component={Dashboard} />
     <Route path="/profile" component={Profile} />
     <Route path="/recipe/:id" component={Recipe} />
     <Route path="/pantry" component={Pantry} />
