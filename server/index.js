@@ -28,6 +28,8 @@ const app = express()
 // }))
 
 app.get("/auth/callback", (req, res) => {
+  console.log('get request');
+
   // const protocol = process.env.NODE_ENV === "production" ? "https" : "http";
   const payload = {
     client_id: process.env.REACT_APP_AUTH0_CLIENT_ID,
@@ -39,6 +41,8 @@ app.get("/auth/callback", (req, res) => {
   };
 
   function tradeCodeForAccessToken() {
+    console.log('tradeCodeForAccessToken');
+
     return axios.post(
       `https://${process.env.REACT_APP_AUTH0_DOMAIN}/oauth/token`,
       payload
@@ -46,6 +50,8 @@ app.get("/auth/callback", (req, res) => {
   }
 
   function tradeAccessTokenForUserInfo(accessTockenResponse) {
+    console.log('tradeAccessTokenForUserInfo');
+
     const accessToken = accessTockenResponse.data.access_token;
     return axios.get(
       `https://${
@@ -55,6 +61,8 @@ app.get("/auth/callback", (req, res) => {
   }
 
   function storeUserInfoInDatabase(response) {
+    console.log('storeUserInfoInDatabase');
+
     const auth0Id = response.data.sub;
 
     const db = req.app.get("db");

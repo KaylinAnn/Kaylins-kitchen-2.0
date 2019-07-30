@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 export class Home extends Component {
 
   login() {
-
     const redirectUri = encodeURIComponent(
       `${window.location.origin}/auth/callback`
     );
