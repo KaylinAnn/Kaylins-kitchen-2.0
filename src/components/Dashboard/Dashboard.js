@@ -22,7 +22,6 @@ export class Dashboard extends Component {
   render() {
 
     const mappedFeaturedRecipes = this.state.recipes.map(recipe => {
-
       return (
         <div>
           <div className='recipe' id={recipe}></div>
